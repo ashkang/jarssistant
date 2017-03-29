@@ -9,6 +9,7 @@
     "jsonfile": "^2.4.0",
     "lodash": "^4.17.4",
     "npid": "^0.4.0",
+    "open": "0.0.5",
     "read-last-lines": "^1.1.2",
     "shelljs": "^0.7.7",
     "string-similarity": "^1.1.0"

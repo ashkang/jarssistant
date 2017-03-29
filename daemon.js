@@ -138,16 +138,19 @@ exports.handler = (daemonize, configFile) => {
       debug(s)
       if (s[0].similarity > threshold) {
         debug('=> action:'.cyan, command.name.yellow, 'similarity:', s[0].similarity)
-
-        shell.exec(command.command, (err, stdout, stderr) => {
-          console.log('=>'.yellow, command.name.cyan)
-          if(err) {
-            console.log('✘'.red, command.name.cyan, stderr)
-          }
-          else {
-            console.log('✓'.green, command.name.cyan, stdout)
-          }
-        })
+        if (command.type === 'bash') {
+          shell.exec(command.command, (err, stdout, stderr) => {
+            console.log('=>'.yellow, command.name.cyan)
+            if(err) {
+              console.log('✘'.red, command.name.cyan, stderr)
+            }
+            else {
+              console.log('✓'.green, command.name.cyan, stdout)
+            }
+          })
+        } else {
+          console.log('?'.yellow, 'sorry, I only know bash for now, so I cannot execute:', command.name.cyan)
+        }
       }
     })
   })
