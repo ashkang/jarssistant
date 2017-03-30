@@ -1,4 +1,13 @@
 {
+  "name": "@ashkang/jarssistant",
+  "version": "0.1.0",
+  "description": "Use Google Assistant or a Google Home device to execute custom commands on your computer",
+  "main": "index.js",
+  "author": "Ashkan Ghassemi <ghassemi@ftml.net>",
+  "license": "GPL-3.0",
+  "scripts": {
+    "patch-release": "npm version patch && npm publish && git push --follow-tags"
+  },
   "dependencies": {
     "colors": "^1.1.2",
     "commander": "^2.9.0",
@@ -13,5 +22,25 @@
     "read-last-lines": "^1.1.2",
     "shelljs": "^0.7.7",
     "string-similarity": "^1.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ashkang/jarssistant.git"
+  },
+  "bin": {
+    "jars": "index.js"
+  },
+  "keywords": [
+    "automation",
+    "google-assistant",
+    "google-home",
+    "jarvis",
+    "cli",
+    "linux"
+  ],
+  "bugs": {
+    "url": "https://github.com/ashkang/jarssistant/issues"
+  },
+  "homepage": "https://github.com/ashkang/jarssistant#readme"
 }

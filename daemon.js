@@ -13,10 +13,10 @@ const shell = require('shelljs');
 const program = require('commander');
 const npid = require('npid')
 const debug = require('debug')('debug')
-
 const configuration = require('./configuration.js')
 
-const pidfile = os.tmpdir() + '/jarssistant.pid'
+const username = os.userInfo().username
+const pidfile = os.tmpdir() + '/' + username + '_jarssistant.pid'
 
 function shutdown(keepPid) {
   if(!keepPid)
@@ -26,28 +26,21 @@ function shutdown(keepPid) {
 }
 
 function getpid(cb) {
-  if(!fs.existsSync(pidfile))
-    return cb()
+  fs.exists(pidfile, (exists) => {
+    if(!exists)
+      return cb()
 
-  firstline(pidfile).then(
-    line => {
-      cb(null, parseInt(line))
-    }
-  )
+    firstline(pidfile).then(
+      line => {
+        cb(null, parseInt(line))
+      }
+    )
+  })
 }
 
 process.on('SIGTERM', () => {
   shutdown()
 })
-
-// process.on('SIGINT', () => {
-//   shutdown()
-// })
-//
-
-// process.on('SIGKILL', () => {
-//   shutdown()
-// })
 
 exports.pidfile = pidfile
 
@@ -58,20 +51,20 @@ exports.shutdown = () => {
       return
     }
 
-    if(fs.existsSync(pidfile)) {
-      process.kill(pid)
-      console.log('terminating jars service with pid:', pid)
-    }
+    console.log('terminating jars service with pid:', pid)
+    process.kill(pid)
+    console.log('successfully terminated jars service')
   })
 }
 
 exports.status = () => {
   getpid((err, pid) => {
-    if(fs.existsSync(pidfile)) {
+    if(pid) {
       console.log('✓'.green, 'jars service is up and running with pid:', pid)
-    } else {
-      console.log('✘'.red, 'jars service is not running or it has crashed')
+      return
     }
+
+    console.log('✘'.red, 'jars service is not running')
   })
 }
 
@@ -82,10 +75,8 @@ exports.reload = () => {
       return
     }
 
-    if(fs.existsSync(pidfile)) {
-      process.kill(pid, 'SIGHUP')
-      console.log('reloading jars service configurations')
-    }
+    process.kill(pid, 'SIGHUP')
+    console.log('reloading jars service configurations')
   })
 }
 

@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "name": "sync jarssistant",
+      "type": "bash",
+      "command": "cd $HOME/jarssistant; git checkout master; git pull",
+      "description": "synchronizes jarssistant source repository",
+      "keywords": "synchronize jarssistant source repository git update sync on branch master on my computer blah blah blah"
+    },
+    {
+      "name": "going out",
+      "type": "bash",
+      "description": "prepares everything for me to go out",
+      "command": "slackcli -t \"YOUR_SLACK_TOKEN\" -a -h \"development\" -m \"@dev be back in a couple of hours.\" -l \"dev\"",
+      "keywords": "I am going out be back later"
+    },
+    {
+      "name": "poweroff",
+      "type": "bash",
+      "description": "shuts down my computer",
+      "command": "sudo poweroff",
+      "keywords": "poweroff shutdown my computer"
+    },
+    {
+      "name": "update",
+      "type": "bash",
+      "description": "updates my computer",
+      "command": "yaourt -Syu --aur --noconfirm",
+      "keywords": "update upgrade my computer"
+    }
+  ]
+}
