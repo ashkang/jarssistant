@@ -1,5 +1,5 @@
 {
-  "name": "@ashkang/jarssistant",
+  "name": "jarssistant",
   "version": "0.1.0",
   "description": "Use Google Assistant or a Google Home device to execute custom commands on your computer",
   "main": "index.js",
