@@ -1,6 +1,6 @@
 {
   "name": "jarssistant",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Use Google Assistant or a Google Home device to execute custom commands on your computer",
   "main": "index.js",
   "author": "Ashkan Ghassemi <ghassemi@ftml.net>",
