@@ -86,6 +86,16 @@ Configuration
 It would not execute it if it is below this threshold level. Similarity is a number between 0 and 1, with 0 meaning no similarity at all
 and 1 meaning a perfect match. You can arrive at your magic threshold number using trial and error.
 
+* Copy **config.json.example** to `/etc/jarssistant.conf` and modify it as you wish.
+* After each modification, you need to reload jarssistant service to re-read the configuration file.
+
+Ideas
+-----
+1. Adding `jars learn` to learn and automatically add your last bash command to configuration file.
+1. Maybe reading back command output through Google Assistant.
+1. Third-party service integration.
+1. Ack messages if commands were successful through Google Assistant.
+
 Command Definition
 -------------
 Each command has 5 sections.
